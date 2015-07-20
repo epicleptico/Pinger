@@ -60,7 +60,23 @@
       });
 
       $scope.data.sort(function(a, b){
-        return a.ip > b.ip ? 1 : -1;
+
+        var aIP = a.split('.');
+        var bIP = b.split('.');
+
+        if(aIP[0] != bIP[0]) {
+          return aIP[0] > bIP[0] ? -1 : 1;
+        }
+
+        if(aIP[1] != bIP[1]) {
+          return aIP[1] > bIP[1] ? -1 : 1;
+        }
+
+        if(aIP[2] != bIP[2]) {
+          return aIP[2] > bIP[2] ? -1 : 1;
+        }
+
+        return  aIP[0] > bIP[3] ? -1 : 1;
       });
 
     }
@@ -73,7 +89,8 @@
 
       var sp = $http({
         url: 'data/pinger', //+ (num++ % 2),
-        method: 'GET'
+        method: 'GET',
+        cache: false,
       });
 
       sp.success(function(data){
