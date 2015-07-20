@@ -61,8 +61,8 @@
 
       $scope.data.sort(function(a, b){
 
-        var aIP = a.split('.');
-        var bIP = b.split('.');
+        var aIP = a.ip.split('.');
+        var bIP = b.ip.split('.');
 
         if(aIP[0] != bIP[0]) {
           return aIP[0] > bIP[0] ? -1 : 1;
