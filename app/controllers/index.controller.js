@@ -17,7 +17,7 @@
 
 
     $interval(function(){
-      _downloadData().then(_onDataDownloaded);
+      _downloadData().then(_onDataDownloaded).catch(function(){});
     }, TIMEOUT_TIMER);
 
 
@@ -77,6 +77,11 @@
       });
 
       sp.success(function(data){
+
+        if(data.trim().length == 0) {
+          $$q.reject();
+        }
+
         $$q.resolve(data
           .split('\n')
           .select(function(elem){ return elem.trim(); })
