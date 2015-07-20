@@ -6,17 +6,17 @@
   var TIMEOUT_TIMER = 500;
 
   ng.module('mainApp').controller(CONTROLLER_NAME, [ '$log',
-    '$scope', '$q', '$http', '$timeout', index_controller
+    '$scope', '$q', '$http', '$interval', index_controller
   ]);
 
 
-  function index_controller($log, $scope, $q, $http, $timeout) {
+  function index_controller($log, $scope, $q, $http, $interval) {
     $scope._name = CONTROLLER_NAME;
 
     $scope.data = [];
 
 
-    $timeout(function(){
+    $interval(function(){
       _downloadData().then(_onDataDownloaded);
     }, TIMEOUT_TIMER);
 
@@ -60,16 +60,19 @@
       });
 
       $scope.data.sort(function(a, b){
-        return a.ip > b.ip;
+        return a.ip > b.ip ? 1 : -1;
       });
 
     }
+
+
+    var num = 1;
 
     function _downloadData() {
       var $$q = $q.defer();
 
       var sp = $http({
-        url: 'data/pinger',
+        url: 'data/pinger', //+ (num++ % 2),
         method: 'GET'
       });
 
