@@ -76,7 +76,7 @@
           return aIP[2] > bIP[2] ? -1 : 1;
         }
 
-        return  aIP[0] > bIP[3] ? -1 : 1;
+        return  aIP[3] > bIP[3] ? -1 : 1;
       });
 
     }
