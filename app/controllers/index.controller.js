@@ -79,7 +79,9 @@
       sp.success(function(data){
         $$q.resolve(data
           .split('\n')
-          .select(function(elem){ return elem.trim(); })
+          .select(function(elem){
+            return elem.substr(6, elem.indexOf('(') - 6).trim();
+          })
           .where(function(elem){ return elem && elem.length > 0 && elem.trim().length > 0; }));
       });
 
