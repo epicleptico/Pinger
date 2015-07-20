@@ -77,7 +77,10 @@
       });
 
       sp.success(function(data){
-        $$q.resolve(data.split('\n').select(function(elem){ return elem.trim(); }));
+        $$q.resolve(data
+          .split('\n')
+          .select(function(elem){ return elem.trim(); })
+          .where(function(elem){ return elem && elem.length > 0 && elem.trim().length > 0; }));
       });
 
       sp.error($$q.reject);
