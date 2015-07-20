@@ -65,18 +65,18 @@
         var bIP = b.ip.split('.');
 
         if(aIP[0] != bIP[0]) {
-          return parseInt(aIP[0]) > parseInt(bIP[0]) ? -1 : 1;
+          return parseInt(aIP[0]) > parseInt(bIP[0]) ? 1 : -1;
         }
 
         if(aIP[1] != bIP[1]) {
-          return parseInt(aIP[1]) > parseInt(bIP[1]) ? -1 : 1;
+          return parseInt(aIP[1]) > parseInt(bIP[1]) ? 1 : -1;
         }
 
         if(aIP[2] != bIP[2]) {
-          return parseInt(aIP[2]) > parseInt(bIP[2]) ? -1 : 1;
+          return parseInt(aIP[2]) > parseInt(bIP[2]) ? 1 : -1;
         }
 
-        return  parseInt(aIP[3]) >parseInt(bIP[3]) ? -1 : 1;
+        return  parseInt(aIP[3]) >parseInt(bIP[3]) ? 1 : -1;
       });
 
     }
